@@ -9,7 +9,7 @@ export default function Cryptobot() {
   const [bot, setBot] = useState({});
   const router = useRouter();
   const { id } = router.query;
-  const tokenId = { id };
+  const tokenId = 44;
 
   const NFT = useAsync(async () => {
     if (!tokenId) return;
