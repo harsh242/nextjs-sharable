@@ -3,10 +3,13 @@ import styles from "../../../styles/Home.module.css";
 import React, { useMemo, useState, useEffect } from "react";
 import { fetchOneNFT } from "../../../lib/indexer";
 import { useAsync } from "react-use";
+import { useRouter } from "next/router";
 
 export default function Cryptobot() {
   const [bot, setBot] = useState({});
-  const tokenId = 2;
+  const router = useRouter();
+  const { id } = router.query;
+  const tokenId = { id };
 
   const NFT = useAsync(async () => {
     if (!tokenId) return;
