@@ -1,16 +1,18 @@
 import Head from "next/head";
 import styles from "../../../styles/Home.module.css";
 import React, { useMemo, useState, useEffect } from "react";
-import { fetchOneNFT } from "../../../lib/indexer";
+import { fetchOneNFT, fetchAllNfts } from "../../../lib/indexer";
 import { useAsync } from "react-use";
 import { useRouter } from "next/router";
 
-export default function Cryptobot() {
+export default function Cryptobot({ Tid, nft }) {
   const [bot, setBot] = useState({});
   const router = useRouter();
   const { id } = router.query;
-  const tokenId = 44;
+  const tokenId = id;
+  console.log(tokenId);
 
+  // setBot(nft);
   const NFT = useAsync(async () => {
     if (!tokenId) return;
     const nft = await fetchOneNFT(tokenId);
@@ -71,3 +73,31 @@ export default function Cryptobot() {
     </div>
   );
 }
+
+// export const getStaticProps = async (context) => {
+//   const tokenId = context.params.id;
+
+//   if (!tokenId) return;
+//   const nft = await fetchOneNFT(tokenId);
+//   console.log("🔥", nft);
+
+//   return {
+//     props: {
+//       tokenId,
+//       nft,
+//     },
+//   };
+// };
+
+// export const getStaticPaths = async () => {
+//   const combined = await fetchAllNfts();
+//   console.log("combined inside get props", combined);
+
+//   const ids = combined.map((el) => el.tokenId);
+//   const paths = ids.map((id) => ({ params: { id: id.toString() } }));
+
+//   return {
+//     paths,
+//     fallback: false,
+//   };
+// };
