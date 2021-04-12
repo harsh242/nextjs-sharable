@@ -3,9 +3,9 @@ import styles from "../../../styles/Home.module.css";
 import Head from "next/head";
 
 const Cryptobot = ({ id, image }) => {
-  //   useEffect(() => {
-  //     window.location.href = `https://cryptocodeschool.in/tezos/cryptobot/${id}`;
-  //   }, []);
+  useEffect(() => {
+    window.location.href = `https://cryptocodeschool.in/tezos/cryptobot/${id}`;
+  }, []);
   return (
     <>
       <Head>
