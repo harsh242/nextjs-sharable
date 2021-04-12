@@ -1,9 +1,13 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import React, { useEffect } from "react";
 import styles from "../../../styles/Home.module.css";
 import Head from "next/head";
 
 const Cryptobot = ({ id, image }) => {
+  useEffect(() => {
+    window.location.href = `https://cryptocodeschool.in/tezos/cryptobot/${id}`;
+  }, []);
   return (
     <>
       <Head>
